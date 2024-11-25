@@ -1,5 +1,5 @@
 #import "@preview/touying:0.4.2": *
-#import "@preview/touying-simpl-hkustgz:0.1.1" as hkustgz-theme
+#import "@preview/touying-simpl-hkustgz:0.1.0" as hkustgz-theme
 #import "@preview/physica:0.9.3": *
 #import "@preview/cetz:0.3.0"
 
@@ -8,8 +8,7 @@
 // Global information configuration
 #let s = (s.methods.info)(
   self: s,
-  title: [Touying for HKUSTGZ: Customize Your Slide Title Here],
-  subtitle: [Customize Your Slide Subtitle Here],
+  title: [The Algebraic Bethe Ansatz and Tensor Network],
   author: [Zhongyi Ni],
   date: datetime.today(),
   institution: [HKUST(GZ)],
@@ -23,11 +22,8 @@
 // Extract slide functions
 #let (slide, empty-slide, title-slide, outline-slide, new-section-slide, ending-slide) = utils.slides(s)
 #show: slides.with()
-
+#outline-slide()
 = Introduction
-
-== Introduction
-
 
 == Brief History of Bethe Ansatz
 
@@ -40,8 +36,9 @@
 == Materials
 1. 量子可积系统导论, 江云峰 (https://www.koushare.com/live/details/11505?vid=33788)
 
+4. Github repository: SolvableModels (https://github.com/nzy1997/SolvableModels)
+
 = XXX Spin Chain
-== XXX Spin Chain
 == Hamiltonian (Periodic Boundary Condition)
 
 $ 
@@ -191,6 +188,7 @@ L_(a n) (u) &= L_(a n) (u) times.circle I_b \
 $]
 
 == RLL Relation
+#slide(composer: (1fr, 0.7fr))[
 $
   R_(a b) (u-v) L_(a n) (u) L_(b n) (v) = L_(b n) (v) L_(a n) (u) R_(a b) (u-v)
 $
@@ -201,23 +199,29 @@ $
   0, i, u-v, 0;
   0, 0, 0, u-v+i;
   )_(a b)
-$
+$][#figure(
+  image("images/figure1.svg", width: 100%))]
 
 
 == Monodromy Matrix
-
+#slide(composer: (1fr, 0.7fr))[
 $
   M_a (u) = L_(a 1) (u)L_(a 2) (u) dots L_(a L) (u) = mat(
   A(u), B(u);
   C(u), D(u);
-  ) 
+  )
 $
 
 RMM Relation:
 $
 R_(a b) (u-v) M_a (u) M_b (v) = M_b (v) M_a (u) R_(a b) (u-v)
-$
-which implies the algebraic relationship between ABCDs, for example:
+$][#figure(
+  image("images/figure5.svg", width: 100%))]
+
+
+
+== RMM Relation
+RMM relation implies the algebraic relationship between ABCDs, for example:
 $
 B(u)B(v) = B(v)B(u), \
  A(u)B(v) = f(u-v)B(v)A(u) + g(u-v)B(u)A(v), \ 
@@ -233,6 +237,7 @@ $
   [T(u), T(v)] = 0
 $
 
+
 == Yang-Baxter Equation
 $
   M_a M_b M_c arrow M_b M_a M_c arrow M_b M_c M_a arrow M_c M_b M_a
@@ -243,6 +248,10 @@ $
 $
   R_(a b) (u_1, u_2) R_(a c) (u_1, u_3) R_(b c) (u_2, u_3) = R_(b c) (u_2, u_3) R_(a c) (u_1, u_3) R_(a b) (u_1, u_2)
 $
+== Yang-Baxter Equation
+
+#figure(image("images/figure2.svg", width: 60%))
+
 == Hamiltonian
 $
   H = -d/(d u) log T(u) |_(u=i/2)
@@ -290,7 +299,8 @@ $
 $
 which gives the Bethe Ansatz equation.
 
-== Quantum Intergrablity
+= Quantum Integrability
+== Quantum Integrability
 Ref: 量子可积系统导论, 江云峰, 第五课 2:13:00
 
 Examples:
@@ -303,7 +313,7 @@ Examples:
 1. Non-relativistic: Lieb-liniger, Calogero-Sutherland...
 2. Relativistic: CFT, Sine-Gordon, Scaling Lee-Yang model...
 
-== Classical Intergrablity
+== Classical Integrability
 
 Liouville integrability:
 1. $exists N$ conserved quantities $I_1, I_2, dots, I_N$ in involution, i.e., ${I_i, I_j} = 0$
