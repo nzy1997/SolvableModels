@@ -34,7 +34,7 @@
 1. The XXX spin chain: Hans Bethe (1931), Coordinate Bethe Ansatz
 2. The XXZ spin chain: Simple Generalization, C. N. Yang and C. P. Yang (1966)
 3. The XYZ spin chain: Rodneys Baxter (1972), 2d eight-vertex model is equivalent to 1d XYZ spin chain
-4. Algebraic Bethe Ansatz (Quantum Inverse Scattering Method): L. D. Faddeev (mid 1970s), Underlying algebraic structure of the intergrable models
+4. Algebraic Bethe Ansatz (Quantum Inverse Scattering Method): L. D. Faddeev (mid 1970s), Underlying algebraic structure of the integrable models
 5. Quantum group: V. G. Drinfeld (1985), M. Jimbo (1986), more abstract algebraic structure called quantum group, a special case of Hopf algebra
 
 == Materials
@@ -291,15 +291,15 @@ $
 which gives the Bethe Ansatz equation.
 
 == Quantum Intergrablity
-Ref: 量子可积系统导论2:13:00
+Ref: 量子可积系统导论, 江云峰, 第五课 2:13:00
 
 Examples:
 - Lattice models: 
 1. Heisenberg: XXX, XXZ, XYZ spin chains, different boundary conditions, non-local interactions...
 2. Statistical mechanics: Ising, 6-vertex model, 8-vertex model...
-3. Stronly Correlated: Hubbard model, t-J model
+3. Strongly Correlated: Hubbard model, t-J model
 
-- continious models:
+- Continuous models:
 1. Non-relativistic: Lieb-liniger, Calogero-Sutherland...
 2. Relativistic: CFT, Sine-Gordon, Scaling Lee-Yang model...
 
@@ -313,7 +313,14 @@ Liouville integrability:
 Problems of Generalization in Quantum:
 1. Degree of freedom $N$: Site number? Hillbert space dimension?
 2. $H = sum lambda ket(lambda)bra(lambda)$, then $I_lambda = ket(lambda)bra(lambda)$
-3. Hard to define independence of $I_lambda$: 
+3. Hard to define independence of $I_lambda$: *Thm:* $[I_lambda,I_lambda'] = 0, exists I, s.t. I_lambda = f_lambda (I)$. (Von Neumann, Mathematical foundations of quantum mechanics, Ch2, section.10)
+
+== Other possibilities?
+- Non-diffractive Scattering
+Suitable for some systems but not all.
+
+- Energy Level Statistics
+[Berry-Tabor Conjecture](https://en.wikipedia.org/wiki/Berry%E2%80%93Tabor_conjecture)
 
 == Slide II / i
 
