@@ -25,6 +25,13 @@
 #outline-slide()
 = Introduction
 
+== Materials
+1. 量子可积系统导论, 江云峰 (https://www.koushare.com/live/details/11505?vid=33788)
+2. Algebraic Bethe ansatz and tensor networks @murg2012algebraic
+3. Algebraic Bethe circuits @sopena2022algebraic.
+4. Bethe Ansatz, Quantum Circuits, and the F-basis @ruiz2024bethe.
+5. Github repository: SolvableModels (https://github.com/nzy1997/SolvableModels)
+
 == Brief History of Bethe Ansatz
 
 1. The XXX spin chain: Hans Bethe (1931), Coordinate Bethe Ansatz
@@ -33,17 +40,13 @@
 4. Algebraic Bethe Ansatz (Quantum Inverse Scattering Method): L. D. Faddeev (mid 1970s), Underlying algebraic structure of the integrable models
 5. Quantum group: V. G. Drinfeld (1985), M. Jimbo (1986), more abstract algebraic structure called quantum group, a special case of Hopf algebra
 
-== Materials
-1. 量子可积系统导论, 江云峰 (https://www.koushare.com/live/details/11505?vid=33788)
-
-4. Github repository: SolvableModels (https://github.com/nzy1997/SolvableModels)
 
 = XXX Spin Chain
 == Hamiltonian (Periodic Boundary Condition)
 
 $ 
-  H_(X X X)  &= -J sum_(n = 1)^L S^x_n S^x_(n+1)+S^y_n S^y_(n+1)+S^z_n S^z_(n+1)  \
-        &=  -J/2 sum_(n = 1)^L  S^-_n S^+_(n+1)+S^+_n S^-_(n+1)+2S^z_n S^z_(n+1)\
+  H_(X X X)  &= -J sum_(n = 1)^L (S^x_n S^x_(n+1)+S^y_n S^y_(n+1)+S^z_n S^z_(n+1))  \
+        &=  -J/2 sum_(n = 1)^L  (S^-_n S^+_(n+1)+S^+_n S^-_(n+1)+2S^z_n S^z_(n+1))\
 $
 Here $S^alpha _n = 1/2 sigma^alpha _n$ and $S^plus.minus_n = S^x_n plus.minus i S^y_n$. From now on, we will set $J = 1$.
 
@@ -63,12 +66,12 @@ Example $ L = 3:$
 - Two spin-downs: $ket(arrow.b arrow.b arrow.t)$, $ket(arrow.b arrow.t arrow.b)$, $ket(arrow.t arrow.b arrow.b)$
 - Three spin-downs: $ket(arrow.b arrow.b arrow.b)$
  $ 
-  H_(X X X) =  -1/2 sum_(n = 1)^L  S^-_n S^+_(n+1)+S^+_n S^-_(n+1)+2S^z_n S^z_(n+1)
+  H_(X X X) =  -1/2 sum_(n = 1)^L  (S^-_n S^+_(n+1)+S^+_n S^-_(n+1)+2S^z_n S^z_(n+1))
 $]
 
-== Vacuum
+== Pseudo-Vacuum
 $
-H_(X X X) =  -1/2 sum_(n = 1)^L  S^-_n S^+_(n+1)+S^+_n S^-_(n+1)+2S^z_n S^z_(n+1)
+H_(X X X) =  -1/2 sum_(n = 1)^L  (S^-_n S^+_(n+1)+S^+_n S^-_(n+1)+2S^z_n S^z_(n+1))
 $
 
 
@@ -100,7 +103,7 @@ with $p = (2 pi m)/L$, $m = 1, 2, dots, L$
 == Two Magnons
 Bethe Ansatz:
 $
-ket(psi (p_1, p_2)) = sum_(1 lt.eq n_1 lt n_2 lt.eq L) chi(p_1, p_2|n_1, n_2) ket(n\, m)
+ket(psi (p_1, p_2)) = sum_(1 lt.eq n_1 lt n_2 lt.eq L) chi(p_1, p_2|n_1, n_2) ket(n_1 \, n_2)
 $
 with 
 $
@@ -135,9 +138,8 @@ $
   A(p_3,p_2,p_1) & = S(p_1,p_2)A(p_3,p_1,p_2) = S(p_1,p_2)S(p_1,p_3)A(p_2,p_1,p_3) \ 
   & = S(p_1,p_2)S(p_1,p_3)S(p_2,p_3)A(p_1,p_2,p_3)
 $
-Solve this?
 
-Boundary condition: 
+Boundary condition gives the Bethe Ansatz equation:
 $
 e^(i p_1 L) S(p_1,p_2)S(p_1,p_3) = e^(i p_2 L) S(p_2,p_1)S(p_2,p_3) = e^(i p_3 L) S(p_3,p_1)S(p_3,p_2) = 1
 $
@@ -175,7 +177,7 @@ $
   L_(a n) (u) = mat(
   u + i S^z_n, i S^-_n;
   i S ^+_n,  u - i S^z_n;
-)_a in bb(C)^2_a times.circle V_n 
+)_a "acts on" (bb(C)^2_a times.circle V_n )
 $
 $
 L_(a n) (u) &= L_(a n) (u) times.circle I_b \ 
@@ -187,7 +189,7 @@ L_(a n) (u) &= L_(a n) (u) times.circle I_b \
 )_(a b)
 $]
 
-== RLL Relation
+== RLL Relation and Yang-Baxter Algebra
 #slide(composer: (1fr, 0.7fr))[
 $
   R_(a b) (u-v) L_(a n) (u) L_(b n) (v) = L_(b n) (v) L_(a n) (u) R_(a b) (u-v)
@@ -202,6 +204,24 @@ $
 $][#figure(
   image("images/figure1.svg", width: 100%))]
 
+
+== Yang-Baxter Equation
+$
+  L_a L_b L_c arrow L_b L_a L_c arrow L_b L_c L_a arrow L_c L_b L_a
+$
+$
+  L_a L_b L_c arrow L_a L_c L_b arrow L_c L_a L_b arrow L_c L_b L_a
+$
+$
+  R_(a b) (u_1, u_2) R_(a c) (u_1, u_3) R_(b c) (u_2, u_3) = R_(b c) (u_2, u_3) R_(a c) (u_1, u_3) R_(a b) (u_1, u_2)
+$
+== Yang-Baxter Equation
+
+#figure(image("images/figure2.svg", width: 60%))
+
+== Yang-Baxter Equation
+
+#figure(image("images/figure4.svg", width: 60%))
 
 == Monodromy Matrix
 #slide(composer: (1fr, 0.7fr))[
@@ -219,7 +239,38 @@ $][#figure(
   image("images/figure5.svg", width: 100%))]
 
 
+== Transfer Matrix
+#slide(composer: (1fr, 1fr))[
+$
+  T(u) = tr_a M_a(u) = A(u) + D(u)
+$
+$
+  [T(u), T(v)] = 0
+$][#figure(
+  image("images/figure6.svg", width: 100%))]
 
+== Hamiltonian
+#slide(composer: (1fr, 1fr))[
+$
+  T(u) = I_0 + u I_1 + u^2 I_2 + dots
+$
+#figure(
+  image("images/integrable.png", width: 80%))
+$
+  H &= d/(d u) log T(u) |_(u=i/2) \ 
+  &= T^(-1)(u)T'(u) |_(u=i/2)
+$
+
+
+][#figure(
+  image("images/figure7.svg", width: 100%))]
+
+== Construction of Eigenstates
+#figure(
+  image("images/figure8.svg", width: 40%))
+$
+  B(u_1)B(u_2) ... B(u_N) ket(Omega)
+$
 == RMM Relation
 RMM relation implies the algebraic relationship between ABCDs, for example:
 $
@@ -228,37 +279,6 @@ B(u)B(v) = B(v)B(u), \
 D(u)B(v) = f(u-v)B(v)D(u) + g(v-u)B(u)D(v)
 $
 where $f(u) = (u+i)/(u)$ and $g(u) = i/(u)$.
-
-== Transfer Matrix
-$
-  T(u) = tr_a M_a(u) = A(u) + D(u)
-$
-$
-  [T(u), T(v)] = 0
-$
-
-
-== Yang-Baxter Equation
-$
-  M_a M_b M_c arrow M_b M_a M_c arrow M_b M_c M_a arrow M_c M_b M_a
-$
-$
-  M_a M_b M_c arrow M_a M_c M_b arrow M_c M_a M_b arrow M_c M_b M_a
-$
-$
-  R_(a b) (u_1, u_2) R_(a c) (u_1, u_3) R_(b c) (u_2, u_3) = R_(b c) (u_2, u_3) R_(a c) (u_1, u_3) R_(a b) (u_1, u_2)
-$
-== Yang-Baxter Equation
-
-#figure(image("images/figure2.svg", width: 60%))
-
-== Hamiltonian
-$
-  H = -d/(d u) log T(u) |_(u=i/2)
-$
-$
-  B(u_1)B(u_2) ... B(u_N) ket(Omega)
-$
 
 == Construction of Eigenstates
 $
@@ -299,6 +319,51 @@ $
 $
 which gives the Bethe Ansatz equation.
 
+== Completeness of Bethe Ansatz
+#slide(composer: (1fr, 0.8fr))[
+Define $S^alpha = sum_(n=1)^L S^alpha_n$, then $S^+ ket(bold(upright(u))_N) = 0$ is equivalent to the Bethe Ansatz equation.
+
+$
+  S^z ket(bold(upright(u))_N)  = (- N/2+(L-N)/2) ket(bold(upright(u))_N)= (L/2-N) ket(bold(upright(u))_N)
+$
+
+$N<L/2$ 
+][
+Recall the spin-j representation of $frak(s u)(2)$: $ ket(j \, m) , m = -j,-j+1,...,j. $
+$
+  S^z ket(j \, m) &= m ket(j \, m) \ 
+  S^+ ket(j \, j) &= 0
+$]
+
+== Clebsch-Gordan Decomposition
+
+*Thm.* (Clebsch-Gordan Decomposition): $D^(\(m\)) times.circle D^(\(n\)) tilde.equiv D^(\(m-n\)) plus.circle D^(\(m-n+2\)) plus.circle dots plus.circle D^(\(m+n\))$(Lie groups, Lie algebras, and representations(GTM222)@hall2013lie Appendix.C)
+
+$
+  (D^(\(1/2\)))^(times.circle L) = plus.circle.big_(J = J_min)^(L\/2) d(L,J) D^(\(J\))\ 
+  J = L/2 - N , d(L,L/2-N) = mat(L;N)- mat(L;N-1)
+$
+
+HNS Conjecture: The Bethe states form a complete basis of the Hilbert space. @hao2013completeness $(L=14)$
+
+江云峰 $(L=20)$
+
+= Algebraic Bethe Circuits
+== Algebraic Bethe Circuits
+#slide(composer: (1fr, 0.8fr))[
+#figure(
+  image("images/ABA_MPS_to_circ.svg", width: 50%))][#figure(
+  image("images/RT_circuit.svg", width: 80%))]
+
+== QR Decomposition
+#slide(composer: (1fr, 1fr,1fr))[
+#figure(
+  image("images/Recursion_P_1.svg", width: 120%))][  #figure(
+  image("images/Recursion_P.svg", width: 120%))][  #figure(
+  image("images/Recursion_P_Last_1.svg", width: 120%))]
+
+
+
 = Quantum Integrability
 == Quantum Integrability
 Ref: 量子可积系统导论, 江云峰, 第五课 2:13:00
@@ -323,7 +388,7 @@ Liouville integrability:
 Problems of Generalization in Quantum:
 1. Degree of freedom $N$: Site number? Hillbert space dimension?
 2. $H = sum lambda ket(lambda)bra(lambda)$, then $I_lambda = ket(lambda)bra(lambda)$
-3. Hard to define independence of $I_lambda$: *Thm:* $[I_lambda,I_lambda'] = 0, exists I, s.t. I_lambda = f_lambda (I)$. (Von Neumann, Mathematical foundations of quantum mechanics, Ch2, section.10)
+3. Hard to define independence of $I_lambda$: *Thm:* $[I_lambda,I_lambda'] = 0, exists I, s.t. I_lambda = f_lambda (I)$. (Von Neumann, Mathematical foundations of quantum mechanics, Ch2, section.10 @von2018mathematical)
 
 == Other possibilities?
 - Non-diffractive Scattering
@@ -331,22 +396,6 @@ Suitable for some systems but not all.
 
 - Energy Level Statistics
 [Berry-Tabor Conjecture](https://en.wikipedia.org/wiki/Berry%E2%80%93Tabor_conjecture)
-
-== Slide II / i
-
-Slide content.
-
-== Slide II / ii
-
-Slide content.
-#slide[
-#show math.equation: set text(10pt)
-$ x^ +1 = 0 $
-
-#show math.equation: set text(50pt)
-
-#grid(columns: (1fr, 1fr), $ x^2+1=0 $, $ x^2+2=0 $)
-]
 
 #pagebreak()
 #bibliography("refs.bib")
