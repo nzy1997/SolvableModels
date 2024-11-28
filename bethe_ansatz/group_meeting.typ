@@ -321,13 +321,15 @@ which gives the Bethe Ansatz equation.
 
 == Completeness of Bethe Ansatz
 #slide(composer: (1fr, 0.8fr))[
+We suppose $N<L/2$, $N>L/2$ is similar.
+
 Define $S^alpha = sum_(n=1)^L S^alpha_n$, then $S^+ ket(bold(upright(u))_N) = 0$ is equivalent to the Bethe Ansatz equation.
 
 $
   S^z ket(bold(upright(u))_N)  = (- N/2+(L-N)/2) ket(bold(upright(u))_N)= (L/2-N) ket(bold(upright(u))_N)
 $
 
-$N<L/2$ 
+
 ][
 Recall the spin-j representation of $frak(s u)(2)$: $ ket(j \, m) , m = -j,-j+1,...,j. $
 $
@@ -337,7 +339,7 @@ $]
 
 == Clebsch-Gordan Decomposition
 
-*Thm.* (Clebsch-Gordan Decomposition): $D^(\(m\)) times.circle D^(\(n\)) tilde.equiv D^(\(m-n\)) plus.circle D^(\(m-n+2\)) plus.circle dots plus.circle D^(\(m+n\))$(Lie groups, Lie algebras, and representations(GTM222)@hall2013lie Appendix.C)
+*Thm.* (Clebsch-Gordan Decomposition): $D^(\(m\)) times.circle D^(\(n\)) tilde.equiv D^(\(m-n\)) plus.circle D^(\(m-n+1\)) plus.circle dots plus.circle D^(\(m+n\))$(Lie groups, Lie algebras, and representations(GTM222)@hall2013lie Appendix.C)
 
 $
   (D^(\(1/2\)))^(times.circle L) = plus.circle.big_(J = J_min)^(L\/2) d(L,J) D^(\(J\))\ 
@@ -397,5 +399,7 @@ Suitable for some systems but not all.
 - Energy Level Statistics
 [Berry-Tabor Conjecture](https://en.wikipedia.org/wiki/Berry%E2%80%93Tabor_conjecture)
 
+
 #pagebreak()
+== Bibliography
 #bibliography("refs.bib")
