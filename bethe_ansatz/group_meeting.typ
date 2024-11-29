@@ -91,7 +91,7 @@ Bethe Ansatz:
 $ 
 ket(psi (p)) = sum_(n = 1)^L e^(i p n) ket(n)
 $
-indeed,
+Indeed,
 $
   H_(X X X) ket(psi (p)) = E_1(p) ket(psi (p))
 $
